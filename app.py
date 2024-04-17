@@ -34,10 +34,11 @@ def predict():
         output = interpreter.tensor(interpreter.get_output_details()[0]['index'])
         result = output()[0]
         predicted_class = np.argmax(result)
+        confidence = float(result[predicted_class])
         print(f'Predicted class: {predicted_class}')
-        print(f'Confidence: {result[predicted_class]:.2f}')
+        print(f'Confidence: {confidence:.2f}')
 
-        return jsonify({"prediction": predicted_class, "confidence": result[predicted_class]})
+        return jsonify({"prediction": predicted_class, "confidence": confidence})
 
     except Exception as e:
         print(f"Error processing image: {e}")
