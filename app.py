@@ -33,7 +33,7 @@ def predict():
         interpreter.invoke()
         output = interpreter.tensor(interpreter.get_output_details()[0]['index'])
         result = output()[0]
-        predicted_class = np.argmax(result)
+        predicted_class = int(np.argmax(result))
         confidence = float(result[predicted_class])
         print(f'Predicted class: {predicted_class}')
         print(f'Confidence: {confidence:.2f}')
