@@ -51,7 +51,7 @@ def predict():
         print(f'Predicted class: {predicted_class}')
         print(f'Confidence: {result[predicted_class]:.2f}')
 
-        return jsonify({"prediction": predicted_class})
+        return jsonify({"prediction": predicted_class, "confidence": result[predicted_class]})
 
     except Exception as e:
         print(f"Error processing image: {e}")
